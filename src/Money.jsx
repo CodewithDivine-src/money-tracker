@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts"
 import "./Money.css"
 
@@ -13,6 +13,19 @@ function Money() {
   const [editDescription, setEditDescription] = useState("")
   const [editAmount, setEditAmount] = useState("")
   const [editType, setEditType] = useState("Expense")
+
+  // Local Storage: Load saved transactions
+  useEffect(() => {
+    const savedTransaction = localStorage.getItem("transactions")
+    if (savedTransaction) {
+      setTransactions(JSON.parse(savedTransaction))
+    }
+  }, [])
+
+  // Local Storage: Save transactions whenever they change
+  useEffect(() => {
+    localStorage.setItem("transactions", JSON.stringify(transactions))
+  }, [transactions])
 
   function addTransaction() {
     if (description === "") return
