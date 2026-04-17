@@ -14,15 +14,15 @@ function Money() {
   const [editAmount, setEditAmount] = useState("")
   const [editType, setEditType] = useState("Expense")
 
-  // Local Storage: Load saved transactions
+  // Load transactions from localStorage when app starts
   useEffect(() => {
-    const savedTransaction = localStorage.getItem("transactions")
-    if (savedTransaction) {
-      setTransactions(JSON.parse(savedTransaction))
+    const saved = localStorage.getItem("transactions")
+    if (saved) {
+      setTransactions(JSON.parse(saved))
     }
   }, [])
 
-  // Local Storage: Save transactions whenever they change
+  // Save transactions to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem("transactions", JSON.stringify(transactions))
   }, [transactions])
