@@ -18,5 +18,7 @@ A React app to track income and expenses with a bar chart visualization.
 2. `npm install`
 3. `npm run dev`
 
+![Expense Tracker Screenshot](![alt text](image.png))
+
 ## Author
 Divinefavour 
